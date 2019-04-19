@@ -36,9 +36,9 @@ router.beforeEach(async (to, from, next) => {
             NProgress.done()
         }
     }
-    if(to.meta.keepalive) {
-        store.commit('SET_INCLUDELIST', to.name)
-    }
+    // if(to.meta.keepalive) {
+    //     store.commit('SET_INCLUDELIST', to.name)
+    // }
     // next();
 })
 

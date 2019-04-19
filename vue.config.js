@@ -77,7 +77,8 @@ module.exports = {
         hotOnly: false,
         proxy: {
             '/api': {
-                target: 'http://www.ddd.com/api', //对应自己的接口
+                // target: 'http://www.ddd.com/api', //对应自己的接口
+                target: 'http://yika.medsci.cn/api',
                 changeOrigin: true,
                 ws: true,
                 pathRewrite: {
@@ -85,7 +86,7 @@ module.exports = {
                 }
             },
             '/common': {
-                target: 'http://www.ddd.com/common', //对应自己的接口
+                target: 'http://yika.medsci.cn/common', //对应自己的接口
                 changeOrigin: true,
                 ws: true,
                 pathRewrite: {

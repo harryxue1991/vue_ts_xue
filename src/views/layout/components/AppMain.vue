@@ -1,25 +1,24 @@
 <template>
     <section class="app-main">
-        <!-- <el-scrollbar>
-            <transition name="fade" mode="out-in"> -->
-                <keep-alive :include="includeList">
+        <el-scrollbar>
+            <transition name="fade" mode="out-in">
+                <keep-alive :include="[]">
                     <router-view></router-view>
                 </keep-alive>
-            <!-- </transition>
-        </el-scrollbar> -->
+            </transition>
+        </el-scrollbar>
     </section>
 </template>
 
-<script>
-export default {
-    name: 'AppMain',
-    computed: {
-        // key() {
-        //     return this.$route.meta.keepalive
-        // },
-        includeList() {
-            return this.$store.getters.includeList
-        }
+<script lang="ts">
+import { Component, Prop, Vue } from "vue-property-decorator";
+import { Getter, Action } from 'vuex-class'
+
+@Component
+export default class AppMain extends Vue {
+    get includeList() {
+        return []
+        // return this.$store.getters.includeList
     }
 }
 </script>

@@ -18,6 +18,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import { Getter } from 'vuex-class'
 import { Route } from "vue-router";
 import SidebarItem from './SidebarItem.vue'
+import { Member } from '@/store/modules/sidebar'
 
 @Component({
   components: {
@@ -25,13 +26,10 @@ import SidebarItem from './SidebarItem.vue'
   }
 })
 export default class Sidebar extends Vue {
-  @Getter('getSidebar') public getSidebar!:any
-
+  @Getter('getSidebar') public getSidebar!:Member
   get routes() {
-    console.log(this.$router)
-    return [1,2]
-    // const refFormName = this.$router.options as HTMLFormElement;
-    // return this.$router.options.routes
+    const routers: any = this.$router;
+    return routers.options.routes
   }
   get isCollapse() {
     return !this.getSidebar.opened

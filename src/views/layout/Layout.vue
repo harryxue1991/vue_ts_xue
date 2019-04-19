@@ -1,15 +1,12 @@
 <template>
-  <div class="app-wrapper">
+  <div class="app-wrapper" :class="classObj">
     <Topbar></Topbar>
-    <!-- <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside"></div> -->
+    <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside"></div>
     <sidebar class="sidebar-container"></sidebar>
-    <!-- <navbar></navbar> -->
+    <navbar></navbar>
     <div class="main-container">
         <app-main></app-main>
     </div>
-  <!-- <div class="app-wrapper" :class="classObj"> -->
-    
-
   </div>
 </template>
 
@@ -34,13 +31,13 @@ export default {
     device() {
       return this.$store.getters.device
     },
-    // classObj() {
-    //   return {
-    //     hideSidebar: !this.sidebar.opened,
-    //     withoutAnimation: this.sidebar.withoutAnimation,
-    //     mobile: this.device === 'mobile'
-    //   }
-    // }
+    classObj() {
+      return {
+        hideSidebar: !this.sidebar.opened,
+        withoutAnimation: this.sidebar.withoutAnimation,
+        mobile: this.device === 'mobile'
+      }
+    }
   },
   created() {
     
@@ -54,7 +51,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  // @import "src/styles/mixin.scss";
+  // @import "src/styles/mixin.lstyl";
   .app-wrapper {
     @include clearfix;
     position: relative;

@@ -1,6 +1,6 @@
 
 import Vue from 'vue'
-import VueRouter, {Route} from 'vue-router';
+import VueRouter, { Route } from 'vue-router';
 
 declare module '*.vue' {
   export default Vue

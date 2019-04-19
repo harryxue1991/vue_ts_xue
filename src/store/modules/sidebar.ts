@@ -4,13 +4,18 @@ import Cookies from 'js-cookie'
 
 // 导出接口，user组建中，state的格式
 export interface State {
-    sidebar: any,
+    sidebar: Member,
     device: string
+}
+
+export interface Member {
+  opened: number | boolean,
+  withoutAnimation: boolean
 }
 
 const initState: State = {
     sidebar: {
-        opened: !+<any>Cookies.get('sidebarStatus'),
+        opened: true,
         withoutAnimation: false
     },
     device: 'desktop'
@@ -38,16 +43,10 @@ const actions = {
 // mutations
 const mutations = {
   [types.TOGGLE_SIDEBAR](state: State) {
-    if (state.sidebar.opened) {
-      console.log(Cookies)
-      // Cookies.set('sidebarStatus', 1)
-    } else {
-      // Cookies.set('sidebarStatus', 0)
-    }
     state.sidebar.opened = !state.sidebar.opened
     state.sidebar.withoutAnimation = false
   },
-  [types.CLOSE_SIDEBAR](state: State, withoutAnimation: number) {
+  [types.CLOSE_SIDEBAR](state: State, withoutAnimation: boolean) {
     // Cookies.set('sidebarStatus', 1)
     state.sidebar.opened = false
     state.sidebar.withoutAnimation = withoutAnimation

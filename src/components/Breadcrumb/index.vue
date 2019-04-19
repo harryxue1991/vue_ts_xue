@@ -22,7 +22,7 @@ export default class hamburger extends Vue {
 
   @Watch("$route")
   routeChange(val: Route, oldVal: Route) {
-      this.getBreadcrumb()
+    this.getBreadcrumb()
   }
   levelList: any = null
   

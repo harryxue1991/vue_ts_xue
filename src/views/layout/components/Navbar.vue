@@ -1,34 +1,32 @@
 <template>
-  <el-menu class="navbar" :class="{active: !sidebar.opened}" mode="horizontal">
-    <hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>
+  <el-menu class="navbar" :class="{active: !getSidebar.opened}" mode="horizontal">
+    <hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="getSidebar.opened"></hamburger>
     <breadcrumb></breadcrumb>
   </el-menu>
 </template>
 
-<script>
-import { mapGetters } from 'vuex'
-import Breadcrumb from '@/components/Breadcrumb'
-import Hamburger from '@/components/Hamburger'
+<script lang="ts">
+import { Component, Prop, Vue } from "vue-property-decorator";
+import { Getter, Action } from 'vuex-class'
+import Breadcrumb from '@/components/Breadcrumb/index.vue'
+import Hamburger from '@/components/Hamburger/index.vue'
 
-export default {
+@Component({
   components: {
     Breadcrumb,
     Hamburger
-  },
-  computed: {
-    ...mapGetters([
-      'getSidebar',
-    ])
-  },
-  methods: {
-    toggleSideBar() {
-      this.$store.dispatch('ToggleSideBar')
-    },
-    logout() {
-      this.$store.dispatch('LogOut').then(() => {
-        location.reload() // 为了重新实例化vue-router对象 避免bug
-      })
-    }
+  }
+})
+export default class Navbar extends Vue {
+  @Getter('getSidebar') public getSidebar!:any
+  
+  toggleSideBar() {
+    this.$store.dispatch('ToggleSideBar')
+  }
+  logout() {
+    this.$store.dispatch('LogOut').then(() => {
+      location.reload() // 为了重新实例化vue-router对象 避免bug
+    })
   }
 }
 </script>

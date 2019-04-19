@@ -1,5 +1,5 @@
 <template>
-    <div class="app-container">医咖后台管理系统</div>
+    <div class="app-container">后台管理系统home</div>
 </template>
 
 <script>
