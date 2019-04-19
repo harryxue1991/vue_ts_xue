@@ -1,0 +1,53 @@
+.p_page {
+    text-align: center;
+    margin-top: 10px;
+}
+.p-search-box {
+    position: relative;
+    margin-bottom: 15px;
+    .model-name {
+        display: inline-block;
+        width: 100px;
+        text-align: right;
+        font-size: 14px;
+    }
+    &-item-box {
+        margin-bottom: 15px;
+        &::after {
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: " ";
+            clear: both;
+            height: 0;
+        }
+    }
+    &-item {
+        float: left;
+        margin-right: 20px;
+    }
+    &-msitem {
+        margin-bottom: 8px;
+    }
+    .el-input {
+        width: 180px;
+    }
+    
+    .p-search-btn {
+        position: absolute;
+        top: 0;
+        right: 20px;
+        text-align: right;
+    }
+}
+
+.p-link {
+    color: #409EFF;
+    cursor: pointer 
+}
+
+.p_nav_button {
+    position: absolute;
+    top: 65px;
+    right: 20px;
+}
