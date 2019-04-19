@@ -18,7 +18,8 @@ const initState: State = {
 
 // getters
 const getters = {
-  getSidebar: (state: State) => state.sidebar
+  getSidebar: (state: State) => state.sidebar,
+  getDevice: (state: State) => state.device
 }
 
 // actions

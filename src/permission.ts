@@ -9,6 +9,7 @@ const whiteList = ['/login','/forget']; // 不重定向白名单
 
 router.beforeEach(async (to, from, next) => {
     NProgress.start()
+    // console.log(store)
     if (getToken()) {
         if (to.path === '/login') {
             next({ path: '/' })

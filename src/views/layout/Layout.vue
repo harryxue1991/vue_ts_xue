@@ -29,11 +29,10 @@ export default {
   mixins: [ResizeMixin],
   computed: {
     sidebar() {
-      console.log(this.$store.getSidebar)
-      return this.$store.getSidebar.sidebar
+      return this.$store.getters.getSidebar
     },
     device() {
-      return this.$store.sidebar.device
+      return this.$store.getters.device
     },
     // classObj() {
     //   return {
