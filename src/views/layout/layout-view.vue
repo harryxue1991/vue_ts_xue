@@ -4,13 +4,12 @@
     </keep-alive>    
 </template>
 
-<script>
-export default {
-    name: 'layout-view',
-    computed: {
-        includeList() {
-            return this.$store.getters.includeList
-        }
-    }
+<script lang="ts">
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
+import { Getter, Action } from 'vuex-class';
+
+@Component
+export default class layoutView extends Vue {
+    @Getter('includeList') public includeList!:Array<any>
 }
 </script>

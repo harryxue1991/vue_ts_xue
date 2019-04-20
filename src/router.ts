@@ -22,7 +22,7 @@ export default new Router({
     {
       path: '/systen',
       component: Layout,
-      redirect: '/home',
+      redirect: '/systen/home',
       name: 'Dashboard',
       meta: { title: '首页', icon: 'home' },
       children: [

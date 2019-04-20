@@ -10,13 +10,14 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+
+import { Component, Vue } from 'vue-property-decorator'
+import { Getter, Action } from 'vuex-class'
 import { Navbar, Sidebar, AppMain, Topbar } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
-import { mapActions } from 'vuex'
 
-export default {
-  name: 'layout',
+@Component({
   components: {
     Navbar,
     Sidebar,
@@ -24,29 +25,24 @@ export default {
     Topbar
   },
   mixins: [ResizeMixin],
-  computed: {
-    sidebar() {
-      return this.$store.getters.getSidebar
-    },
-    device() {
-      return this.$store.getters.device
-    },
-    classObj() {
-      return {
-        hideSidebar: !this.sidebar.opened,
-        withoutAnimation: this.sidebar.withoutAnimation,
-        mobile: this.device === 'mobile'
-      }
+})
+export default class layout extends Vue {
+
+  @Getter('getSidebar') public sidebar!:any
+  @Getter('getDevice') public device!:any
+
+  get classObj() {
+    return {
+      hideSidebar: !this.sidebar.opened,
+      withoutAnimation: this.sidebar.withoutAnimation,
+      mobile: this.device === 'mobile'
     }
-  },
-  created() {
-    
-  },
-  methods: {
-    handleClickOutside() {
-      this.$store.dispatch('CloseSideBar', { withoutAnimation: false })
-    }
-  },
+  }
+
+  handleClickOutside() {
+    this.$store.dispatch('CloseSideBar', { withoutAnimation: false })
+  }
+  
 }
 </script>
 

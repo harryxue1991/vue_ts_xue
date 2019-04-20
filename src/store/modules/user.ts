@@ -1,4 +1,4 @@
-import { Commit } from 'vuex'
+import { Commit, Dispatch } from 'vuex'
 import login from '@/api/login'
 import request from '@/utils/request'
 import * as types from '../mutation-types'
@@ -47,12 +47,13 @@ const getters = {
 // actions
 const actions = {
   // 登入
-  async Login(context: { commit: Commit; state: State }, userInfo: User) {
+  async Login(context: { commit: Commit; state: State, dispatch: Dispatch }, userInfo: User) {
     const username = userInfo.username.trim()
     const response: any = await login.login(username, userInfo.password)
     const data: LoginState = response.data
     setToken(data.token)
     context.commit(types.SET_TOKEN, data.token)
+    context.dispatch('GetInfo', data.token)
     return response
   },
 
