@@ -6,3 +6,6 @@ export const SET_USERS = 'SET_USERS'
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR'
 export const CLOSE_SIDEBAR = 'CLOSE_SIDEBAR'
 export const TOGGLE_DEVICE = 'TOGGLE_DEVICE'
+
+// modules/common
+export const LOAD_CHANGE = 'LOAD_CHANGE'

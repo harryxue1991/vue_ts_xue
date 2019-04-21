@@ -6,6 +6,13 @@ export default {
     return request.get(url, {params})
   },
 
+  project_get_list: (params: any) => {
+    return request.get('/api/admin/project/searchlist', {params})
+  },
+  project_get_doctors: (params: any) => {
+    return request.get('/api/admin/doctor/searchlist', {params})
+  },
+
   // 上传图片
   uploadImg: (params: File) => {
     return request.post('/common/admin/attach/admin_upload', params)

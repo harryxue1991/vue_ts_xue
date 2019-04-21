@@ -1,5 +1,5 @@
 import Vue from 'vue';
-// import Component from "vue-class-component";
+import Component from "vue-class-component";
 import App from './App.vue';
 import router from './router';
 import store from '@/store/index';
@@ -10,20 +10,29 @@ import '@/icons'
 import '@/permission'
 import api from '@/api/index'
 import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import 'element-ui/lib/theme-chalk/index.css'
+
+// 自定义全局组件
+import MsTable from '@/components/ms-table/ms-table.vue'
+import MsHandle from '@/components/ms-handle/ms-handle.vue'
+import MsRender from '@/components/ms-render/ms-render.vue'
+Vue.component(MsTable.name, MsTable);
+Vue.component(MsHandle.name, MsHandle);
+Vue.component(MsRender.name, MsRender);
 
 Vue.use(ElementUI);
+// Vue.use(myComponetns);
 
 Vue.config.productionTip = false;
 
 Vue.prototype.$api = api
 
-// 不起作用
-// Component.registerHooks([
-//   "beforeRouteEnter",
-//   "beforeRouteLeave",
-//   "beforeRouteUpdate"
-// ]);
+// Register the router hooks with their names
+Component.registerHooks([
+  'beforeRouteEnter',
+  'beforeRouteLeave',
+  'beforeRouteUpdate' // for vue-router 2.2+
+])
 
 new Vue({
   router,
