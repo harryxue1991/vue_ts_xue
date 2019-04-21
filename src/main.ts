@@ -13,12 +13,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css'
 
 // 自定义全局组件
-import MsTable from '@/components/ms-table/ms-table.vue'
-import MsHandle from '@/components/ms-handle/ms-handle.vue'
-import MsRender from '@/components/ms-render/ms-render.vue'
-Vue.component(MsTable.name, MsTable);
-Vue.component(MsHandle.name, MsHandle);
-Vue.component(MsRender.name, MsRender);
+import '@/ms-config/index.js'
 
 Vue.use(ElementUI);
 // Vue.use(myComponetns);

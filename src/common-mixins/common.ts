@@ -1,7 +1,5 @@
-// import { mapActions, mapGetters } from 'vuex';
 import { Vue, Component, Watch } from 'vue-property-decorator'
 import { Getter, Action } from 'vuex-class'
-import { Route } from "vue-router";
 
 @Component
 export default class Common extends Vue {
@@ -9,12 +7,12 @@ export default class Common extends Vue {
 
     currentPage = 1;
     size = 10;
-    count = undefined;
+    count = 0;
     list = [];
     submitData:any = {};
 
-    increaseCreated:any = false;
-    getFunc:any = undefined;
+    // increaseCreated:any = false;
+    // getFunc:any = undefined;
 
     created() {
         if(this.increaseCreated) {
@@ -55,13 +53,11 @@ export default class Common extends Vue {
             page: this.currentPage,
             per: this.size,
         })
-        // if(this.increaseSearch) {
-        //     this.increaseSearch()
-        // }
+        if(this.increaseSearch) {
+            this.increaseSearch()
+        }
         this.load_change(true);
-        debugger;
         let func:string = this.getFunc();
-        
         try {
             const res = await this.$api[func](this.submitData)
             this.count = res.count

@@ -57,6 +57,10 @@ const actions = {
     return response
   },
 
+  SetToken(context: { commit: Commit; state: State }, token: string ) {
+    context.commit(types.SET_TOKEN, token)
+  },
+
   async GetInfo(context: { commit: Commit; state: State }, token: string) {
     const response: any = await login.get_info(token)
     const data: Member = response.data

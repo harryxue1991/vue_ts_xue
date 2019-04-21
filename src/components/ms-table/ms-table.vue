@@ -54,9 +54,7 @@
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import { Getter, Action } from 'vuex-class'
 
-@Component({
-    name: 'ms-table'
-})
+@Component
 export default class MsTable extends Vue {
     @Prop({ default: [] }) columns!: Array<any>;
     @Prop({ default: [] }) data!: Array<any>;
@@ -69,19 +67,19 @@ export default class MsTable extends Vue {
     @Prop({ default: 1 }) currentPage!: Number;
     @Prop({ default: 10 }) size!: Number;
 
-    // @Getter('loading') public loading!:boolean
+    @Getter('getLoading') public loading!:boolean
 
     autoHeight = '';
     tableHeight = 0;
 
 
-    handleSelectionChange(val: any) {
+    handleSelectionChange(val: any):void {
         this.$emit('handleSelectionChange', val)
     };
-    changeSize(val: number) {
+    changeSize(val: number):void {
         this.$emit('changeSize', val)
     };
-    changePage(val: number) {
+    changePage(val: number):void {
         this.$emit('changePage', val)
     }
     

@@ -1,7 +1,6 @@
 <template>
     <div class="app-container">
-
-        <ms-table
+        <MsTable
             :data="list" 
             :columns="columns"
             @changeSize="changeSize"
@@ -9,19 +8,16 @@
             :count = "count"
             :currentPage = "currentPage"
             :size = "size"
-        ></ms-table>
+        ></MsTable>
     </div>
 </template>
 
-
-
 <script lang="ts">
-import {Component, Prop, Vue} from 'vue-property-decorator'
-import { mixins } from 'vue-class-component';
-import common from '@/common-mixins/common.ts'
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Common from '@/common-mixins/common.ts'
 
 @Component({
-    mixins: [common]
+    mixins: [Common]
 })
 export default class List extends Vue {
     columns = [
@@ -37,16 +33,21 @@ export default class List extends Vue {
                 return h('MsHandle', {
                     props: { items },
                     on: { 
-                        // adopt: this.adopt,
-                        // notThrough: this.notThrough
+                        adopt: this.adopt,
+                        notThrough: this.notThrough
                     }
                 })
             }
         },
-    ]
-
+    ];
     getFunc() {
         return 'project_get_list'
+    };
+    adopt() {
+        alert('通过')
     }
-
+    notThrough() {
+        alert('不通过')
+    }
 }
+</script>

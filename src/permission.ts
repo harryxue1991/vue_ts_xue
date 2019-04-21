@@ -7,10 +7,10 @@ import { getToken } from '@/utils/auth' // 验权
 
 const whiteList = ['/login','/forget']; // 不重定向白名单
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to: any, from: any, next: any) => {
     NProgress.start()
-    // console.log(store)
     if (getToken()) {
+        store.dispatch('SetToken', getToken());
         if (to.path === '/login') {
             next({ path: '/' })
             NProgress.done() // if current page is dashboard will not trigger	afterEach hook, so manually handle it

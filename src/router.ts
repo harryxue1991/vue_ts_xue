@@ -6,11 +6,11 @@ Vue.use(Router);
 import Layout from '@/views/layout/Layout.vue'
 
 export default new Router({
-  mode: 'history',
+  // mode: 'history',
   base: process.env.BASE_URL,
   routes: [
       // 首页重定向
-
+    { path: '/login', component: () => import('@/views/login/index'), meta: {hidden: true} },
     {
       path: '/',
       component: Layout,
@@ -26,7 +26,6 @@ export default new Router({
         }
       ]
     },
-
     {
       path: '/project',
       component: Layout,
